@@ -1,0 +1,10 @@
+build
+composeApp/build
+.gradle
+.idea
+*.iml
+*.ipr
+*.iws
+*.backup
+*.kotlin_module
+
