@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="journey">Journey</string>
+    <string name="journey_catch_phrase">find your place.</string>
+    <string name="create_account_label">Create account</string>
+    <string name="sign_in_label">Sign in</string>
+    <string name="go_label">Go</string>
+
+    <string name="username_or_email_placeholder">Username or email address</string>
+    <string name="username_placeholder">Username</string>
+    <string name="password_placeholder">Password</string>
+    <string name="first_name_placeholder">First name</string>
+    <string name="last_name_placeholder">Last name</string>
+    <string name="email_placeholder">Email address</string>
+    <string name="phone_number_placeholder">Phone number</string>
+    <string name="current_location_placeholder">Current location</string>
+    <string name="bio_placeholder">User bio</string>
+
+    <string name="back_button_label">Back</string>
+    <string name="continue_button_label">Continue</string>
+    <string name="login_button_label">Login</string>
+    <string name="skip_for_now_button_label">skip for now</string>
+    <string name="create_journey_label">Create journey</string>
+    <string name="explore_label">Explore</string>
+    <string name="visit_profile_label">Visit profile</string>
+    <string name="shop_travel_and_momentos_label">Shop travel and momentos</string>
+    <string name="start_your_label">start your</string>
+
+    <string name="select_a_profile_picture_title">Select a profile picture</string>
+    <string name="select_a_profile_picture_body">Give your profile some character by adding a personal photo</string>
+
+    <string name="add_a_bio_title">Add a bio</string>
+    <string name="add_a_bio_body">Make your profile more unique by adding a bio and / or location</string>
+
+    <string name="share_title">Share</string>
+    <string name="share_body">your moments and experiences</string>
+
+    <string name="connect_title">Connect</string>
+    <string name="connect_body">with a global community</string>
+
+    <string name="discover_title">Discover</string>
+    <string name="discover_body">new places and adventures</string>
+
+    <string name="error_disk_full">Oops, it seems like your disk is full.</string>
+    <string name="error_unknown">Oops, something went wrong.</string>
+    <string name="error_request_timeout">The request timed out.</string>
+    <string name="error_no_internet">Couldn't reach server, please check your internet connection.</string>
+    <string name="error_too_many_requests">Your quota seems to be exceeded.</string>
+    <string name="error_serialization">Couldn't parse data.</string>
+</resources>
