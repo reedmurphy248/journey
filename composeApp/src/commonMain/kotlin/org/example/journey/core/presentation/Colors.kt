@@ -19,7 +19,7 @@ val onPrimaryContainer = Color(0xFFFFFFFF)
 val primaryContainer = Color(0xFF7E80FF)
 val tertiaryContainer = Color(0xFF4B4B68)
 
-val error = Color(0xFFB06F6F)
+val errorRed = Color(0xFFB06F6F)
 
 val photoContainerSecondary = Color(0xFF070712).copy(alpha = 0.6f)
 val photoContainer = Color(0xFF070712).copy(alpha = 0.2f)

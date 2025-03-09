@@ -40,6 +40,11 @@ val bodyLarge = TextStyle(
     fontFamily = fontFamily
 )
 
+val bodySmall = TextStyle(
+    fontSize = 14.sp,
+    fontFamily = fontFamily
+)
+
 val labelLarge = TextStyle(
      fontSize = 18.sp,
      fontWeight = FontWeight.Bold,

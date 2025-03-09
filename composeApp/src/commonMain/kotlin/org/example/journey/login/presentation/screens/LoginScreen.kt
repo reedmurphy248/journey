@@ -10,20 +10,25 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import journey.composeapp.generated.resources.Res
 import journey.composeapp.generated.resources.back_button_label
-import journey.composeapp.generated.resources.create_account_label
 import journey.composeapp.generated.resources.journey
 import journey.composeapp.generated.resources.login_button_label
 import journey.composeapp.generated.resources.password_placeholder
-import journey.composeapp.generated.resources.sign_in_label
 import journey.composeapp.generated.resources.username_or_email_placeholder
 import org.example.journey.core.presentation.displayMedium
 import org.example.journey.core.presentation.labelLarge
 import org.example.journey.core.presentation.onBackground
+import org.example.journey.login.domain.User
+import org.example.journey.login.presentation.LoginAction
+import org.example.journey.login.presentation.LoginState
+import org.example.journey.login.presentation.LoginViewModel
 import org.example.journey.login.presentation.authButtonSpacing
 import org.example.journey.login.presentation.authScreensWidth
 import org.example.journey.login.presentation.components.AuthButtonPrimary
@@ -32,8 +37,44 @@ import org.example.journey.login.presentation.components.FormInputBar
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun LoginScreen(
+fun LoginScreenRoot(
+    viewModel: LoginViewModel,
+    onBackClick: () -> Unit,
+    onLoginSuccess: (User) -> Unit,
+    onLoginFailure: (String) -> Unit
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
 
+    LaunchedEffect(state.error) {
+        state.error?.let { error ->
+            onLoginFailure(error)
+        }
+    }
+
+    LaunchedEffect(state.loggedInUser) {
+        state.loggedInUser?.let { user ->
+            onLoginSuccess(user)
+        }
+    }
+
+    LoginScreen(
+        state = state,
+        onAction = { action ->
+            when (action) {
+                LoginAction.BackButtonPressed -> {
+                    viewModel.onAction(LoginAction.BackButtonPressed)
+                    onBackClick()
+                }
+                else -> viewModel.onAction(action)
+            }
+        }
+    )
+}
+
+@Composable
+fun LoginScreen(
+    state: LoginState,
+    onAction: (LoginAction) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -56,15 +97,20 @@ fun LoginScreen(
                 ) {
                     FormInputBar(
                         leadingIcon = Icons.Outlined.Person,
-                        value = "",
+                        value = state.username,
                         placeholder = stringResource(Res.string.username_or_email_placeholder),
-                        onValueChange = {}
+                        onValueChange = {
+                            onAction(LoginAction.UsernameChanged(it))
+                        }
                     )
                     FormInputBar(
                         leadingIcon = Icons.Outlined.Lock,
-                        value = "",
+                        value = state.password,
                         placeholder = stringResource(Res.string.password_placeholder),
-                        onValueChange = {}
+                        onValueChange = {
+                            onAction(LoginAction.PasswordChanged(it))
+                        },
+                        isPassword = true
                     )
                 }
             }
@@ -73,11 +119,11 @@ fun LoginScreen(
             ) {
                 AuthButtonPrimary(
                     text = stringResource(Res.string.login_button_label),
-                    onClick = {}
+                    onClick = { onAction(LoginAction.LoginButtonPressed) }
                 )
                 AuthButtonSecondary(
                     text = stringResource(Res.string.back_button_label),
-                    onClick = {}
+                    onClick = { onAction(LoginAction.BackButtonPressed) }
                 )
             }
         }

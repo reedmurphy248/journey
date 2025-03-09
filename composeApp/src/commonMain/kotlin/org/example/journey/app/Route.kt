@@ -15,6 +15,9 @@ interface Route {
     data object Login: Route
 
     @Serializable
+    data object SignUpGraph: Route
+
+    @Serializable
     data object SignUp: Route
 
     @Serializable

@@ -47,4 +47,12 @@
     <string name="error_no_internet">Couldn't reach server, please check your internet connection.</string>
     <string name="error_too_many_requests">Your quota seems to be exceeded.</string>
     <string name="error_serialization">Couldn't parse data.</string>
+
+    <string name="invalid_username">Invalid username</string>
+    <string name="username_not_unique">Username not unique</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="invalid_email">Invalid email</string>
+    <string name="email_not_unique">Email not unique</string>
+    <string name="invalid_phone_number">Invalid phone number</string>
+    <string name="phone_number_not_unique">Phone number not unique</string>
 </resources>

@@ -34,6 +34,6 @@ fun AppAndroidPreview() {
             .fillMaxSize()
             .background(background)
     ) {
-        SignUpEndNavScreen()
+        // SelectProfilePictureScreen({}, {})
     }
 }
